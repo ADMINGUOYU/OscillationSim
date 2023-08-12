@@ -79,8 +79,10 @@ void osc_init(double p_length, double g_input, double p_angle, double i_scale_x,
 
 	circum_degree = 0.0;
 	osc_currentVelocity = osc_maxVelocity * sin(ANGLETORAD(circum_degree));
-	osc_current_x = cos(ANGLETORAD(circum_degree)) * circum_Radius;
-	osc_current_y = osc_length - (sqrt(pow(osc_length, 2) + pow(osc_current_x, 2)));
+	osc_current_x = osc_startDisplace_x_circle;
+		// cos(ANGLETORAD(circum_degree))* circum_Radius;
+	osc_current_y = osc_startDisplace_y_circle;
+		//osc_length - (sqrt(pow(osc_length, 2) + pow(osc_current_x, 2)));
 	osc_currentAngle_RAD = asin(osc_current_x / OSC_LENGTH);
 	osc_currentAngle_DEG = ANGLETODEG(osc_currentAngle_RAD);
 
@@ -133,7 +135,7 @@ void updateGraph(double startTime, double runTime, double lastRunTime) {
 
 	osc_currentVelocity = osc_maxVelocity * sin(ANGLETORAD(circum_degree));
 	osc_current_x = cos(ANGLETORAD(circum_degree)) * circum_Radius;
-	osc_currentAngle_RAD = asin(osc_current_x / OSC_LENGTH);
+	osc_currentAngle_RAD = asin(osc_current_x / osc_length);
 	osc_current_y = osc_length - osc_length * cos(osc_currentAngle_RAD);
 	osc_currentAngle_DEG = ANGLETODEG(osc_currentAngle_RAD);
 
